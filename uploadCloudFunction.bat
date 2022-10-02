@@ -1,0 +1,1 @@
+"d:\Program Files (x86)\Tencent\微信web开发者工具\cli.bat" cloud functions deploy --e penglei-backend-7g9v5qdl06c8cf60 --n quickstartFunctions --r --project "d:\Users\JJBOOM\WeChatProjects\whale" --report_first --report
