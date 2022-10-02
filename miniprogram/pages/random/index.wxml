@@ -1,0 +1,6 @@
+<view class="outer_container">
+    <view class="title">
+        本次获取的随机值：
+    </view>
+    <view>{{text}}</view>
+</view>
