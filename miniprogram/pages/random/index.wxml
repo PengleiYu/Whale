@@ -3,6 +3,6 @@
         本次幸运数字
     </view>
     <view class="center_items_container">
-        <view>{{text}}</view>
+        <view class="luck_text">{{text}}</view>
     </view>
 </view>
