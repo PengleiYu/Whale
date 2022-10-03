@@ -2,5 +2,7 @@
     <view class="title">
         本次获取的随机值：
     </view>
-    <view>{{text}}</view>
+    <view class="center_items_container">
+        <view>{{text}}</view>
+    </view>
 </view>

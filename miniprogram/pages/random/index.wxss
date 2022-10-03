@@ -1,5 +1,24 @@
-.outer_container{
+.title {
+    font-family: PingFang SC;
+    font-weight: 500;
+    color: #000000;
+    font-size: 44rpx;
+    margin-bottom: 40rpx;
+}
+
+.outer_container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
+    align-items: center;
+}
+
+.center_items_container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
     align-items: center;
 }

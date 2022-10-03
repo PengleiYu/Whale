@@ -2,13 +2,8 @@ Page({
     data: {
         text: '',
     },
-    onLoad: async function (options) {
-        // let randInt = Math.floor(Math.random() * 100);
-        // this.setData({
-        //     text: randInt + ""
-        // })
-
-
+    fetchData: async function (isPull) {
+        console.log(`fetchData called with [ ${isPull} ]`)
         let result = await wx.cloud.callFunction({
             // 云函数名称
             name: 'random',
@@ -16,9 +11,19 @@ Page({
             data: {},
         })
 
-        console.log(result)
+        console.log("call random", result)
         this.setData({
             text: result.result
         })
+        if (isPull) {
+            let stopRefreshResult = await wx.stopPullDownRefresh()
+            console.log("call stopPullDownRefresh", stopRefreshResult)
+        }
+    },
+    onLoad: async function (options) {
+        await this.fetchData();
+    },
+    onPullDownRefresh: async function () {
+        await this.fetchData(true)
     }
 });
