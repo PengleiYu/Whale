@@ -1,0 +1,8 @@
+<view class="outer_container">
+    <view class="title">
+        格言
+    </view>
+    <view class="center_items_container">
+        <view class="luck_text">{{text}}</view>
+    </view>
+</view>

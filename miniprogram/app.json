@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/aphorism/index",
     "pages/random/index",
     "pages/index/index"
   ],
