@@ -16,8 +16,8 @@
 }
 
 .center_items_container {
-    height: 100%;
     width: 80%;
+    flex-grow: 2;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -26,4 +26,8 @@
 .luck_text {
     font-size: 2em;
     font-weight: bolder;
+}
+
+.placeholder_bottom {
+    flex-grow: 1;
 }

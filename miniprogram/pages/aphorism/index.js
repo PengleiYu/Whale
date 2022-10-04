@@ -1,6 +1,6 @@
 import {aphorism_list} from "./aphorism.json"
 
-const EMPTY_TEXT = "白茫茫大地真干净！"
+const EMPTY_TEXT = "没有数据!"
 
 function getDataSource() {
     return aphorism_list;
@@ -31,11 +31,13 @@ Page({
     },
     refreshText(pullRefresh) {
         let randomAphorism = getRandomItem(this.dataSource);
-        this.setData({
-            text: randomAphorism ?? EMPTY_TEXT
-        })
         if (pullRefresh) {
             wx.stopPullDownRefresh()
         }
+        setTimeout(() => {
+            this.setData({
+                text: randomAphorism ?? EMPTY_TEXT
+            })
+        }, 500)
     },
 });
