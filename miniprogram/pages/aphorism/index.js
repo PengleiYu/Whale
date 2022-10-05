@@ -29,6 +29,15 @@ Page({
     onPullDownRefresh() {
         this.refreshText(true)
     },
+    onShareAppMessage(options) {
+        console.log(`onShareAppMessage: ${JSON.stringify(options)}`)
+        return {
+            title: '随机格言',
+        }
+    },
+    onShareTimeline() {
+        console.log(`onShareTimeline`)
+    },
     refreshText(pullRefresh) {
         let randomAphorism = getRandomItem(this.dataSource);
         if (pullRefresh) {
