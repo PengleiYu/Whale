@@ -26,6 +26,7 @@
 .luck_text {
     font-size: 2em;
     font-weight: bolder;
+    white-space: pre-wrap;
 }
 
 .placeholder_bottom {

@@ -17,6 +17,12 @@ function getRandomItem(dataSource) {
     return dataSource[index];
 }
 
+function formatItem(itemStr) {
+  // return itemStr.replaceAll("；", "；\n")
+  //   .replaceAll("。", "。\n")
+    return itemStr;
+}
+
 Page({
     data: {
         text: EMPTY_TEXT,
@@ -39,7 +45,7 @@ Page({
         console.log(`onShareTimeline`)
     },
     refreshText(pullRefresh) {
-        let randomAphorism = getRandomItem(this.dataSource);
+        let randomAphorism = formatItem(getRandomItem(this.dataSource));
         if (pullRefresh) {
             wx.stopPullDownRefresh()
         }
