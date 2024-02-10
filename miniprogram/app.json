@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/vehicleLicenseLimit/vehicleLicenseLimit",
     "pages/aphorism/index",
     "pages/random/index",
     "pages/index/index"
