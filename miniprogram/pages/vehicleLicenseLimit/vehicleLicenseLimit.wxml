@@ -19,10 +19,16 @@
     </picker-view-column>
 </picker-view>
 <button bind:tap="queryLimitInfo">查询</button>
-<text>城市：{{limitInfo.city}}</text>
-<text>日期：{{limitInfo.date}} , {{limitInfo.week}}</text>
-<text>限行号码：{{limitInfo.limitNumber}}</text>
-<text>限行时间：{{limitInfo.limitTime}}</text>
-<text>限行区域：{{limitInfo.limitArea}}</text>
-<text>限行规则：{{limitInfo.limitRule}}</text>
-<text>限行摘要：{{limitInfo.limitSummary}}</text>
+
+<view wx:if="{{!!limitInfo.errMsg}}">
+    <text>{{limitInfo.errMsg}}</text>
+</view>
+<view wx:else class="text-zone">
+    <text>城市：{{limitInfo.city}}</text>
+    <text>日期：{{limitInfo.date}} , {{limitInfo.week}}</text>
+    <text>限行号码：{{limitInfo.limitNumber}}</text>
+    <text>限行时间：{{limitInfo.limitTime}}</text>
+    <text>限行区域：{{limitInfo.limitArea}}</text>
+    <text>限行规则：{{limitInfo.limitRule}}</text>
+    <text>限行摘要：{{limitInfo.limitSummary}}</text>
+</view>

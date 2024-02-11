@@ -1,0 +1,4 @@
+.text-zone {
+    display: flex;
+    flex-direction: column;
+}

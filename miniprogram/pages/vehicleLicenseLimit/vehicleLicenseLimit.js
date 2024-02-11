@@ -7,6 +7,7 @@ class LimitInfo {
     limitSummary
     limitNumber
     limitRule
+    errMsg
 }
 
 const date = new Date()
@@ -29,12 +30,12 @@ function getFullDateArr() {
     return {years, months, days}
 }
 
-let fullDateArr = getFullDateArr();
+const fullDateArr = getFullDateArr();
 const years = fullDateArr.years
 const months = fullDateArr.months
 const days = fullDateArr.days
 
-function createLimitInfo(data) {
+function createSuccessLimitInfo(data) {
     let limitInfo = new LimitInfo();
     limitInfo.city = data.cityname
     limitInfo.date = data.date
@@ -44,6 +45,12 @@ function createLimitInfo(data) {
     limitInfo.limitNumber = data.number
     limitInfo.limitRule = data.numberrule
     limitInfo.limitSummary = data.summary
+    return limitInfo;
+}
+
+function createFailLimitInfo(errMsg) {
+    let limitInfo = new LimitInfo();
+    limitInfo.errMsg = errMsg
     return limitInfo;
 }
 
@@ -57,7 +64,7 @@ const INIT_DATE = {
 Page({
     data: {
         text: "请求中",
-        limitInfo: new LimitInfo(),
+        limitInfo: createFailLimitInfo('尚未查询'),
         years, months, days,
         year: INIT_DATE.year, month: INIT_DATE.month, day: INIT_DATE.day,
         value: PICKER_INIT_INDEXES,
@@ -70,7 +77,7 @@ Page({
         let that = this;
         let date = `${this.data.year}-${this.data.month}-${this.data.day}`
         wx.request({
-            url: 'https://api.jisuapi.com/vehiclelimit/query', //仅为示例，并非真实的接口地址
+            url: 'https://api.jisuapi.com/vehiclelimit/query',
             data: {
                 appkey: 'b2660d7cf46f0de2',
                 city: 'beijing',
@@ -81,20 +88,28 @@ Page({
             },
             success(res) {
                 let resData = res.data;
+                console.log('success', JSON.stringify(resData))
                 let status = resData.status;
                 let msg = resData.msg;
-                let data = resData.result;
-                let text = JSON.stringify(resData)
-                console.log('success', text)
+                let result = resData.result;
+                let limitInfo;
+                if (status === 0) {
+                    console.log('业务成功')
+                    limitInfo = createSuccessLimitInfo(result);
+                } else {
+                    console.log('业务失败')
+                    limitInfo = createFailLimitInfo(`业务失败：${status}-${msg}`);
+                }
                 that.setData({
-                    limitInfo: createLimitInfo(data),
+                    limitInfo,
                 })
             },
             fail(res) {
                 let text = JSON.stringify(res)
                 console.log('fail', text)
+                let errMsg = `平台失败：${text}`;
                 that.setData({
-                    text
+                    limitInfo: createFailLimitInfo(errMsg)
                 })
             },
         })
