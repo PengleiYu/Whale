@@ -1,7 +1,28 @@
+<picker-view indicator-style="height: 50px;" style="width: 100%; height: 300px;" value="{{value}}"
+             bindchange="bindChange">
+    <picker-view-column>
+        <view wx:for="{{years}}" wx:key="{{years}}" style="line-height: 50px; text-align: center;">{{item}}年</view>
+    </picker-view-column>
+    <picker-view-column>
+        <view wx:for="{{months}}" wx:key="{{months}}" style="line-height: 50px; text-align: center;">{{item}}月</view>
+    </picker-view-column>
+    <picker-view-column>
+        <view wx:for="{{days}}" wx:key="{{days}}" style="line-height: 50px; text-align: center;">{{item}}日</view>
+    </picker-view-column>
+    <picker-view-column>
+        <view class="icon-container">
+            <image class="picker-icon" src="../lib/daytime.png"/>
+        </view>
+        <view class="icon-container">
+            <image class="picker-icon" src="../lib/night.png"/>
+        </view>
+    </picker-view-column>
+</picker-view>
+<button bind:tap="queryLimitInfo">查询</button>
 <text>城市：{{limitInfo.city}}</text>
 <text>日期：{{limitInfo.date}} , {{limitInfo.week}}</text>
-<text>限行区域：{{limitInfo.limitArea}}</text>
-<text>限行时间：{{limitInfo.limitTime}}</text>
 <text>限行号码：{{limitInfo.limitNumber}}</text>
+<text>限行时间：{{limitInfo.limitTime}}</text>
+<text>限行区域：{{limitInfo.limitArea}}</text>
 <text>限行规则：{{limitInfo.limitRule}}</text>
 <text>限行摘要：{{limitInfo.limitSummary}}</text>
